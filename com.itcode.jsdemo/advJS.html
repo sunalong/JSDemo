@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adavance JS</title>
+</head>
+<body>
+<!--<script>-->
+<!--var stu = new Object();-->
+<!--stu.fName = "fuckName";-->
+<!--stu.lName = "lastName";-->
+<!--stu.age = 52;-->
+<!--stu.eyeColor = "blue";-->
+<!--document.write(stu.fName + " is" + stu.age + " color:" + stu.eyeColor);-->
+<!--</script>-->
+
+<!--<script>-->
+<!--person = {firName: "jone", lasName: "doe", age: 50, eyeColor: "blue"};-->
+<!--document.write(person.firName + " is" + person.age);-->
+<!--</script>-->
+
+<script>
+    function Pers(firstName, lasName, age, eyeColor) {
+        this.firstName = firstName;
+        this.lasName = lasName;
+        this.age = age;
+        this.eyeColor = eyeColor;
+    }
+    laoWang = new Pers("baobao", "wang", 35, "blue");
+    //    document.write(laoWang.firstName + " " + laoWang.lasName);
+    var txt = "";
+    for (x in laoWang) {
+        txt = txt + laoWang[x];
+    }
+    console.log(txt);
+</script>
+<script>
+    document.write(0.2+0.1);
+</script>
+
+<script>
+    var y=0377;
+    var x=0xff;
+    document.write(y+"  "+x);
+</script>
+
+<script>
+    var num=129;
+    document.write("十进制:"+num+'<br>');
+    document.write("二进制:"+num.toString(2)+'<br>');
+    document.write("八进制:"+num.toString(8)+'<br>');
+    document.write("十六进制:"+num.toString(16)+'<br>');
+</script>
+<p id="nanId"></p>
+<script>
+    var x=100/"Apple";
+    var y=100/"100";
+    var z=100/0;
+    document.getElementById("nanId").innerHTML=isNaN(x)+"  "+isNaN(y)+" "+isNaN(z);
+</script>
+<p id="numOrObjId"></p>
+<script>
+    var x=123;
+    var y=new Number(123);
+    var z=(x===y);
+    var txt=typeof(x)+" "+typeof(y)+" "+z;
+    document.getElementById("numOrObjId").innerHTML=txt;
+</script>
+</body>
+</html>

@@ -5,6 +5,70 @@
     <title>test html dom</title>
 </head>
 <body>
+<style>
+    div {
+        background-color: coral;
+        border: 1px solid;
+        padding: 50px;
+    }
+</style>
+<div id="myDiv1">
+    <p id="myP1">点击段落，这是冒泡。</p>
+</div>
+<br>
+<div id="myDiv2">
+    <p id="myP2">点击段落，这是捕获。 </p>
+</div>
+<script>
+    document.getElementById("myP1").addEventListener("click", function () {
+        alert("点击了 P1 元素!");
+    }, false);
+    document.getElementById("myDiv1").addEventListener("click", function () {
+        alert("点击了 DIV1 元素 !");
+    }, false);
+    document.getElementById("myP2").addEventListener("click", function () {
+        alert("点击了 P2 元素!");
+    }, true);
+    document.getElementById("myDiv2").addEventListener("click", function () {
+        alert("点击了 DIV2 元素 !");
+    }, true);
+</script>
 
+<div id="myDiv3"> div元素添加了onmousemove事件句柄,鼠标在桔红色的框内移动时会显示随机数
+    <p>点击按钮移除Div的事件句柄</p>
+    <button onclick="removeHandler()" id="myBtn">点老子</button>
+</div>
+<p id="randNumId"></p>
+<script>
+    document.getElementById("myDiv3").addEventListener("mousemove", showRandNumFun);
+    function showRandNumFun() {
+        document.getElementById("randNumId").innerHTML = Math.random();
+    }
+    function removeHandler() {
+        document.getElementById("myDiv3").removeEventListener("mousemove", showRandNumFun);
+    }
+</script>
+
+<div id="divPContainer">
+    <p id="p1">段落一</p>
+    <p id="p2">段落二</p>
+</div>
+<script>
+    var para = document.createElement("p");
+    var node = document.createTextNode("新添加的段落");
+    para.appendChild(node);
+    var divNode = document.getElementById("divPContainer");
+    divNode.appendChild(para);
+</script>
+
+<div id="divDelete">
+    <p id="pDelete1">第一个段落</p>
+    <p id="pDelete2">第二个段落</p>
+</div>
+<script>
+    var divNode = document.getElementById("diveDelete");
+    var pNode = document.getElementById("pDelete1");
+    divNode.removeChild(pNode);
+</script>
 </body>
 </html>
