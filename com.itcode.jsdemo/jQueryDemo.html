@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Demo</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<h1 id="h01Id"></h1>
+<script>
+    function myFun() {
+        $("#h01Id").html("Hello jQuery")
+    }
+    $(document).ready(myFun);
+</script>
+
+<hr>
+<h1 id="h02Id"></h1>
+<script>
+    function myAttFun() {
+        $("#h02Id").attr("style","color:red").html("red Text")
+    }
+    $(document).ready(myAttFun);
+</script>
+</body>
+</html>

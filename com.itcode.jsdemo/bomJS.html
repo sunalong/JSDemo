@@ -16,5 +16,148 @@
     x = document.getElementById("windowSizeId");
     x.innerHTML = "浏览器尺寸:width:" + width + "  height:" + height;
 </script>
+<script>
+    document.write("可用宽度:" + screen.availWidth);
+    document.write("可用高度:" + screen.availHeight + "<br>");
+</script>
+
+<script>
+    document.write("web主机的域名:" + location.hostname + "<br>");
+    document.write("当前页面的路径和文件名:" + location.pathname + "<br>");
+    document.write("web主机的端口:" + location.port + "<br>");
+    document.write("当前页面的url:" + location.href + "<br>");
+
+    function newDoc() {
+        window.location.assign("http://www.w3cschool.com");
+    }
+</script>
+<input type="button" value="load new document……" onclick="newDoc()"/>
+
+<script>
+    function goback() {
+        window.history.back();
+    }
+    function goForward() {
+        window.history.forward();
+    }
+</script>
+<input type="button" value="back" onclick="goback()">
+<input type="button" value="forward" onclick="goForward()">
+
+<p>Window Navigator</p>
+<div id="navigatorId"></div>
+<script>
+    txt = "<p>浏览器代号:" + navigator.appCodeName + "</p>";
+    txt += "<p>浏览器名称:" + navigator.appName + "</p>";
+    txt += "<p>浏览器版本:" + navigator.appVersion + "</p>";
+    txt += "<p>启用Cookies:" + navigator.cookieEnabled + "</p>";
+    txt += "<p>硬件平台:" + navigator.platform + "</p>";
+    txt += "<p>用户代理:" + navigator.userAgent + "</p>";
+    txt += "<p>用户代理语言:" + navigator.systemLanguage + "</p>";
+    document.getElementById("navigatorId").innerHTML = txt;
+</script>
+
+<!--<script>-->
+<!--alert("你好，我是一个警告框！");-->
+<!--</script>-->
+
+<button onclick="confirFun()">点老子</button>
+<p id="confirId"></p>
+<script>
+    function confirFun() {
+        var x;
+        var r = confirm("确认框~");
+        if (r == true) {
+            x = "你按下了\"确定\"按钮!";
+        } else {
+            x = "你按下了\"确定\"按钮!";
+        }
+        document.getElementById("confirId").innerHTML = x;
+    }
+</script>
+
+<button onclick="promptFun()">点老子</button>
+<p id="promptId"></p>
+<script>
+    function promptFun() {
+        var x;
+        var name = prompt("请输入你的名字", "Harry Potter");
+        if (name != null && name != "") {
+            x = "Hello," + name + " How do you do!";
+        }
+        document.getElementById("promptId").innerHTML = x;
+    }
+</script>
+
+<p>单击按钮每1秒出来一个hello警告框</p>
+<button onclick="timeFun()">计时事件</button>
+<script>
+    function timeFun() {
+        setInterval(function () {
+            alert("Hello");
+        }, 1000);
+    }
+</script>
+
+<p id="showTimeId"></p>
+<button onclick="stopShowFun()">停止时钟</button>
+<script>
+    var showVar = setInterval(function () {
+        showTimeFun();
+    }, 1000);
+    function showTimeFun() {
+        var date = new Date();
+        var time = date.toLocaleTimeString();
+        document.getElementById("showTimeId").innerHTML = time;
+    }
+    function stopShowFun() {
+        clearInterval(showVar);
+    }
+</script>
+<hr>
+<button onclick="exeJSFun()">点我</button>
+<button onclick="stopJSFun()">取消弹框</button>
+<script>
+    var myVar;
+    function exeJSFun() {
+        myVar = setTimeout(function () {
+            alert("hello")
+        }, 1000);
+    }
+    function stopJSFun() {
+        clearTimeout(myVar);
+    }
+</script>
+
+<script>
+    function setCookie(cName, cValue, exeDays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exeDays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cName + "=" + cValue + "; " + expires;
+    }
+    function getCookie(cName) {
+        var name = cName + "=";
+        var cookie = document.cookie.split(";");
+        for (var i = 0; i < cookie.length; i++) {
+            var c = cookie[i].trim();
+            if (c.indexOf(name) == 0)
+                return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+    function checkCookie() {
+        var user = getCookie("username");
+        if (user != "")
+            alert("Welcome again " + user);
+        else {
+            user = prompt("Please enter your name:", "");
+            if (user != "" && user != null) {
+                setCookie("username", user, 30);
+            }
+        }
+    }
+</script>
+<body onload="checkCookie()"></body>
 </body>
 </html>
